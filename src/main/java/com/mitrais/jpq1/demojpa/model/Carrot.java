@@ -1,20 +1,18 @@
 package com.mitrais.jpq1.demojpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Carrot {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private boolean isFrozen;
+
+    @Column(name = "freeze_status")
+    private boolean freezeStatus;
+
 
     public Carrot() {
-    }
-
-    public Carrot(int id, boolean isFrozen) {
-        this.id = id;
-        this.isFrozen = isFrozen;
     }
 
     public int getId() {
@@ -25,11 +23,11 @@ public class Carrot {
         this.id = id;
     }
 
-    public boolean isFrozen() {
-        return isFrozen;
+    public Boolean getFreezeStatus() {
+        return freezeStatus;
     }
 
-    public void setFrozen(boolean frozen) {
-        isFrozen = frozen;
+    public void setFreezeStatus(boolean freezeStatus) {
+        this.freezeStatus = freezeStatus;
     }
 }

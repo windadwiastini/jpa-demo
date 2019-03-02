@@ -17,7 +17,21 @@ public class CarrotService implements CarrotServiceInterface {
 
     @Override
     public List<Carrot> findAllCarrots() {
-
         return carrotRepository.findAllCarrot();
+    }
+
+    @Override
+    public void deleteCarrotById(int id) {
+        carrotRepository.deleteCarrot(id);
+    }
+
+    @Override
+    public void editCarrot(int id, boolean status) {
+        carrotRepository.editCarrot(id,status);
+    }
+
+    @Override
+    public void createCarrot(boolean status) {
+        carrotRepository.addCarrot(status);
     }
 }

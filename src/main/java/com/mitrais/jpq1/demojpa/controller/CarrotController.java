@@ -2,9 +2,7 @@ package com.mitrais.jpq1.demojpa.controller;
 
 import com.mitrais.jpq1.demojpa.model.Carrot;
 import com.mitrais.jpq1.demojpa.service.CarrotService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,20 @@ public class CarrotController {
     @GetMapping
     public List<Carrot> findAllCarrot() {
         return carrotService.findAllCarrots();
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteCarrotById(@PathVariable int id){
+            carrotService.deleteCarrotById(id);
+    }
+
+    @PostMapping
+    public void createCarrot(@RequestBody Carrot carrot){
+        carrotService.createCarrot(carrot.getFreezeStatus());
+    }
+
+    @PatchMapping("{id}")
+    public void patchCarrot(@PathVariable int id, @RequestBody Carrot carrot){
+        carrotService.editCarrot(id,carrot.getFreezeStatus());
     }
 }
