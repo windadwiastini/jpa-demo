@@ -20,6 +20,10 @@ public class CarrotService implements CarrotServiceInterface {
         return carrotRepository.findAllCarrot();
     }
 
+    public List<Carrot> findAllCriteria(){
+        return carrotRepository.getCarrot();
+    }
+
     @Override
     public void deleteCarrotById(int id) {
         carrotRepository.deleteCarrot(id);

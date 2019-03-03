@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
@@ -18,6 +22,15 @@ public class CarrotRepository  {
                 return entityManager.createQuery(
                         "select c from Carrot c"
                 ).getResultList();
+        }
+
+        public List getCarrot(){
+            CriteriaBuilder criteriaBuilder=entityManager.getCriteriaBuilder();
+            CriteriaQuery<Carrot> carrotCriteriaQuery=criteriaBuilder.createQuery(Carrot.class);
+            Root<Carrot> carrotRoot=carrotCriteriaQuery.from(Carrot.class);
+            carrotCriteriaQuery.select(carrotRoot);
+            TypedQuery<Carrot> carrotTypedQuery=entityManager.createQuery(carrotCriteriaQuery);
+            return carrotTypedQuery.getResultList();
         }
 
         public void deleteCarrot(Integer carrotId){
@@ -42,6 +55,8 @@ public class CarrotRepository  {
             carrot.setFreezeStatus(status);
             entityManager.getTransaction().commit();
         }
+
+
 
 
 }

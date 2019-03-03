@@ -21,6 +21,9 @@ public class CarrotController {
         return carrotService.findAllCarrots();
     }
 
+    @GetMapping("/criteria")
+    public List<Carrot> criteria(){return carrotService.findAllCriteria();}
+
     @DeleteMapping("{id}")
     public void deleteCarrotById(@PathVariable int id){
             carrotService.deleteCarrotById(id);
