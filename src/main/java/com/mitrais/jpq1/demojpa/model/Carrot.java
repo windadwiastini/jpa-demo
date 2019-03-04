@@ -11,6 +11,23 @@ public class Carrot {
     @Column(name = "freeze_status")
     private boolean freezeStatus;
 
+    public int getBasketId() {
+        return basketId;
+    }
+
+    public void setBasketId(int basket_id) {
+        this.basketId = basket_id;
+    }
+
+    @Column(name = "basket_id")
+    private int basketId;
+
+    @Column(name = "freezer_id")
+    private int freezerId;
+
+    public boolean isFreezeStatus() {
+        return freezeStatus;
+    }
 
     public Carrot() {
     }

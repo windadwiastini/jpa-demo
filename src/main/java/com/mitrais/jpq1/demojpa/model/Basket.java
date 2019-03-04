@@ -1,9 +1,7 @@
 package com.mitrais.jpq1.demojpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Basket {
@@ -11,6 +9,40 @@ public class Basket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(unique = true, name = "employee_id", insertable = false, updatable = false)
+    private Employee employee;
+
+    @OneToMany
+    @JoinColumn(name = "basket_id")
+    private List<Carrot> carrot;
+
+    public List<Carrot> getCarrot() {
+        return carrot;
+    }
+
+    public void setCarrot(List<Carrot> carrot) {
+        this.carrot = carrot;
+    }
+
+    public int getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
+    }
+
+    private int employee_id;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     public Basket() {
     }

@@ -8,5 +8,5 @@ public interface CarrotServiceInterface {
     List<Carrot> findAllCarrots();
     void deleteCarrotById(int id);
     void editCarrot(int id, boolean status);
-    void createCarrot(boolean status);
+    void createCarrot(Carrot carrot);
 }

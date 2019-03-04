@@ -35,7 +35,7 @@ public class CarrotService implements CarrotServiceInterface {
     }
 
     @Override
-    public void createCarrot(boolean status) {
-        carrotRepository.addCarrot(status);
+    public void createCarrot(Carrot carrot) {
+        carrotRepository.addCarrot(carrot);
     }
 }

@@ -31,7 +31,7 @@ public class CarrotController {
 
     @PostMapping
     public void createCarrot(@RequestBody Carrot carrot){
-        carrotService.createCarrot(carrot.getFreezeStatus());
+        carrotService.createCarrot(carrot);
     }
 
     @PatchMapping("{id}")

@@ -10,6 +10,7 @@
         <class>com.mitrais.jpq1.demojpa.model.Carrot</class>
         <class>com.mitrais.jpq1.demojpa.model.Basket</class>
         <class>com.mitrais.jpq1.demojpa.model.Freezer</class>
+        <class>com.mitrais.jpq1.demojpa.model.Employee</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/carrot"/>
@@ -20,8 +21,6 @@
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode"
                       value="database" />
-
         </properties>
-
     </persistence-unit>
 </persistence>

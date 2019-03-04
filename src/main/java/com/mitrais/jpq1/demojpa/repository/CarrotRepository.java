@@ -25,12 +25,29 @@ public class CarrotRepository  {
         }
 
         public List getCarrot(){
-            CriteriaBuilder criteriaBuilder=entityManager.getCriteriaBuilder();
-            CriteriaQuery<Carrot> carrotCriteriaQuery=criteriaBuilder.createQuery(Carrot.class);
-            Root<Carrot> carrotRoot=carrotCriteriaQuery.from(Carrot.class);
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery<Carrot> carrotCriteriaQuery = criteriaBuilder.createQuery(Carrot.class);
+            Root<Carrot> carrotRoot = carrotCriteriaQuery.from(Carrot.class);
             carrotCriteriaQuery.select(carrotRoot);
-            TypedQuery<Carrot> carrotTypedQuery=entityManager.createQuery(carrotCriteriaQuery);
+            TypedQuery<Carrot> carrotTypedQuery = entityManager.createQuery(carrotCriteriaQuery);
             return carrotTypedQuery.getResultList();
+        }
+
+
+        public void addCarrot(Carrot carrot){
+            entityManager.getTransaction().begin();
+            Carrot carrot1 = new Carrot();
+            carrot1.setFreezeStatus(carrot.getFreezeStatus());
+            carrot1.setBasketId(carrot.getBasketId());
+            entityManager.persist(carrot);
+            entityManager.getTransaction().commit();
+        }
+
+        public void editCarrot(int id,boolean status){
+            Carrot carrot = entityManager.find(Carrot.class,id);
+            entityManager.getTransaction().begin();
+            carrot.setFreezeStatus(status);
+            entityManager.getTransaction().commit();
         }
 
         public void deleteCarrot(Integer carrotId){
@@ -40,23 +57,4 @@ public class CarrotRepository  {
                     .executeUpdate();
             entityManager.getTransaction().commit();
         }
-
-        public void addCarrot(boolean status){
-            entityManager.getTransaction().begin();
-            Carrot carrot=new Carrot();
-            carrot.setFreezeStatus(status);
-            entityManager.persist(carrot);
-            entityManager.getTransaction().commit();
-        }
-
-        public void editCarrot(int id,boolean status){
-            Carrot carrot=entityManager.find(Carrot.class,id);
-            entityManager.getTransaction().begin();
-            carrot.setFreezeStatus(status);
-            entityManager.getTransaction().commit();
-        }
-
-
-
-
 }
